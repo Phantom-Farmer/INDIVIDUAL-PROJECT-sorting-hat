@@ -2,19 +2,30 @@ body {
   background-color: antiquewhite;
 }
 
+.card {
+  
+  height: 250px;
+  width: 150px;
+  text-align: center;
+  align-items: center;
+}
+
+#app {
+  display: flex;
+}
 
 .gryffindor-type {
-
+background-color: rgb(229, 186, 76);
 }
 
 .hufflepuff-type {
-
+background-color: rgb(188, 188, 244);
 }
 
 .ravenclaw-type {
-
+background-color: rgb(159, 152, 152);
 }
 
 .slytherin-type {
-
+background-color: rgb(157, 244, 157);
 }
