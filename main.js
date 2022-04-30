@@ -29,11 +29,7 @@ const students = [
     enlisted: false
   },
 
-
-
-
-
-]
+];
 
 
 const renderToDom = (divId, textToRender) => {
@@ -41,17 +37,18 @@ const renderToDom = (divId, textToRender) => {
   selectedElement.innerHTML = textToRender;
 };
 
-const cardsOnDom = (pets) => {
+const cardsOnDom = (students) => {
   let domString = "";
-  for (const member of pets) {
-    //const catType = member.type === "cat";
-    //const dogType = member.type === "dog";
-    //const dinoType = member.type === "dino";
+  for (const student of students) {
+    const gryffindorType = student.location === "Gryffindor";
+    const hufflepuffType = student.location === "Hufflepuff";
+    const ravenclawType = student.location === "Ravenclaw";
+    const slytherinType = student.location === "Slytherin"
    domString += `<div class="card">
    <div class="card-header">School of Magick</div>
    <div class="card-body">
      <h5 class="card-title">${student.name}</h5>
-     <p class="card-text">${student.location}</p>
+     <p ${gryffindorType ? "class=gryffindor-type" : ""} ${hufflepuffType ? "class=hufflepuff-type" : ""} ${ravenclawType ? "class=ravenclaw-type" : ""} ${slytherinType ? "class=slytherin-type" : ""}>${student.location}</p>
      <a href="#" class="btn btn-primary">EXPEL</a>
    </div>
  </div>`
