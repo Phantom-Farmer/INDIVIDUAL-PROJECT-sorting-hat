@@ -32,13 +32,52 @@ const students = [
 ];
 
 
+
 const renderToDom = (divId, textToRender) => {
   const selectedElement = document.querySelector(divId);
   selectedElement.innerHTML = textToRender;
 };
 
+
+const sortOnDom = () => {
+  let domString = "";
+  domString =`
+  <div class="card" id="top" style="width: 18rem;">
+  <img src="assets/magick.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">MAGICK SCHOOL</h5> 
+    <p class="card-text">Let's get you sorted!</p>
+    <form>
+      <a href="#" class="btn btn-primary">Sort!</a>
+    </form>
+   
+  </div>
+</div>
+`;
+  
+  renderToDom("#form-container", domString);
+};
+
+const buttonsOnDom = () => {
+   let domString = "";
+   domString =`
+  
+   <button type="button" id="all-btn">ALL</button>
+   <button type="button" id="gryf-btn">Gryffindor</button>
+   <button type="button" id="huff-btn">Hufflepuff</button>
+   <button type="button" id="rav-btn">Ravenclaw</button>
+   <button type="button" id="sly-btn">Slytherin</button>
+   <button type="button" id="ex-btn">EXPELLED</button>
+ 
+   `;
+   renderToDom("#filter-container", domString);
+};
+
+  
+
 const cardsOnDom = (students) => {
   let domString = "";
+
   for (const student of students) {
     const gryffindorType = student.location === "Gryffindor";
     const hufflepuffType = student.location === "Hufflepuff";
@@ -53,8 +92,27 @@ const cardsOnDom = (students) => {
    </div>
  </div>`
     
- }
- renderToDom("#app", domString);
+   }
+   renderToDom("#student-container", domString);
+};
+
+const expelledOnDom = () => {
+   let domString = "";
+   domString += `
+      <div class="card" id="lost" style="width: 18rem;">
+        <img src="assets/fire.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h2>student name</h2>
+         <p class="card-text">this student has been expelled to THE LOST BOYS</p>
+      </div>
+  </div>
+   
+   `;
+   renderToDom("#expelled-container", domString)
+
 }
 
+sortOnDom();
+buttonsOnDom();
 cardsOnDom(students);
+expelledOnDom();
