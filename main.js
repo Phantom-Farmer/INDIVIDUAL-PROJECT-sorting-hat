@@ -1,4 +1,4 @@
-const hogHouses = ['G', 'H', 'R', 'S']
+const hogHouses = ['G', 'H', 'R', 'S', 'Ex']
 
 const students = [
   {
@@ -48,7 +48,7 @@ const sortOnDom = () => {
     <h5 class="card-title">MAGICK SCHOOL</h5> 
     <p class="card-text">Let's get you sorted!</p>
     <form>
-      <a href="#" class="btn btn-primary">Sort!</a>
+      <a href="#" class="btn btn-primary" id="sort">Sort!</a>
     </form>
    
   </div>
@@ -88,7 +88,7 @@ const cardsOnDom = (students) => {
    <div class="card-body">
      <h5 class="card-title">${student.name}</h5>
      <p ${gryffindorType ? "class=gryffindor-type" : ""} ${hufflepuffType ? "class=hufflepuff-type" : ""} ${ravenclawType ? "class=ravenclaw-type" : ""} ${slytherinType ? "class=slytherin-type" : ""}>${student.location}</p>
-     <a href="#" class="btn btn-primary" id="expel--${student.sId}">EXPEL</a>
+     <a href="#" class="btn btn-primary" id="xpel--${student.sId}">EXPEL</a>
    </div>
  </div>`
     
@@ -104,6 +104,9 @@ const expelledOnDom = () => {
       <div class="card-body">
         <h2>student name</h2>
          <p class="card-text">this student has been expelled to THE LOST BOYS</p>
+         <div>
+           <p id="xpel"></p>
+         </div>
       </div>
   </div>
    
@@ -142,17 +145,30 @@ document.querySelector("#filter-container").addEventListener("click", (e) => {
  });
 }
 //*********************BUTTON on CARDS*************/
-
-document.querySelector("#student-container").addEventListener("click", (e) => {
-
+             //card buttons must have unique id's
+/*document.querySelector("#student-container").addEventListener("click", (e) => {
+             //get student id off of button pushed
   if (e.target.id) {
-    
+    const [action, sId] = e.target.id.split("--"); //destructured split of button id
+
+            //finding index of student object in students array
+    const index = students.findIndex(taco => taco.sId === sId);
+
+    if (e.target.id.includes("xpel")) {
+      expelledOnDom(sId);
+    }
+
+    if (e.target.id.includes("xpel")) {
+      students.splice(index, 1);
+      cardsOnDom(students);
+    }
+
   }
 
-}
+}*/
 
 sortOnDom();
 buttonsOnDom();
 cardsOnDom(students);
 expelledOnDom();
-eventListeners()
+eventListeners();
