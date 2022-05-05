@@ -57,6 +57,7 @@ border: 3px solid brown;
 #expelled-container {
 display: flex;
 justify-content: center;
+
 }
 
 .gryffindor-type {
@@ -99,4 +100,24 @@ justify-content: center;
   background-color: black;
   color: antiquewhite;
   margin: 5px;
+}
+
+#expelled-cards {
+  background-color: gray;
+  display: flex;
+  justify-content: center;
+  border: 9px dotted black;
+}
+
+#exBody {
+  background-color: lightgray;
+}
+
+#exHead {
+  background-color: black;
+  color: antiquewhite;
+}
+
+#exCard {
+  background-color: palegreen;
 }

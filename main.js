@@ -31,6 +31,24 @@ const students = [
 
 ];
 
+const lostKids = [
+
+  {
+    sId: 5,
+    name: "Frazier",
+    location: "LK Army",
+    enlisted: false
+  },
+
+  {
+    sId: 6,
+    name: "Nick",
+    location: "LK Army",
+    enlisted: false
+  },
+
+]
+
 
 
 const renderToDom = (divId, textToRender) => {
@@ -96,6 +114,9 @@ const cardsOnDom = (students) => {
    renderToDom("#student-container", domString);
 };
 
+
+
+
 const expelledOnDom = () => {
    let domString = "";
    domString += `
@@ -103,7 +124,7 @@ const expelledOnDom = () => {
         <img src="assets/fire.jpg" class="card-img-top" alt="...">
       <div class="card-body">
         <h2>student name</h2>
-         <p class="card-text">this student has been expelled to THE LOST BOYS</p>
+         <p class="card-text">this student has been expelled to THE LOST KIDS ARMY</p>
          <div>
            <p id="xpel"></p>
          </div>
@@ -114,6 +135,22 @@ const expelledOnDom = () => {
    renderToDom("#expelled-container", domString)
 
 }
+
+const kidsOnDom = (lostKids) => {
+  let domString = "";
+
+  for (const kid of lostKids) {
+    domString += `<div class="card" id="exCard">
+   <div class="card-header" id="exHead">LOST KIDS</div>
+   <div class="card-body">
+     <h5 class="card-title" id="exBody">${kid.name}</h5>
+     <p>Get Lost!</p>
+   </div>
+ </div>`;
+
+  renderToDom("#expelled-cards", domString);
+ }
+};
 
 //*********************EVENT LISTENERS***************/
 
@@ -143,32 +180,42 @@ document.querySelector("#filter-container").addEventListener("click", (e) => {
   } 
   
  });
-}
+
 //*********************BUTTON on CARDS*************/
              //card buttons must have unique id's
-/*document.querySelector("#student-container").addEventListener("click", (e) => {
-             //get student id off of button pushed
-  if (e.target.id) {
-    const [action, sId] = e.target.id.split("--"); //destructured split of button id
+             document.querySelector("#student-container").addEventListener("click", (e) => {
+              //get student id off of button pushed
+   if (e.target.id) {
+     const [action, sId] = e.target.id.split("--"); //destructured split of button id
+            //taco
+             //finding index of student object in students array
+     const index = students.findIndex(taco => taco.sId === parseInt(sId));
+ 
+     if (e.target.id.includes("xpel")) {
+       /*students.splice(index, 1);
+       cardsOnDom(students); 
+       lostKids.push(index, 1);
+       kidsOnDom(lostKids);*/
 
-            //finding index of student object in students array
-    const index = students.findIndex(taco => taco.sId === sId);
+       lostKids.push(index, 1);
+       kidsOnDom(lostKids);
+       students.splice(index, 1);
+       cardsOnDom(students);
+     }
 
-    if (e.target.id.includes("xpel")) {
-      expelledOnDom(sId);
-    }
+     
+ 
+   }
+ 
+ });
 
-    if (e.target.id.includes("xpel")) {
-      students.splice(index, 1);
-      cardsOnDom(students);
-    }
 
-  }
+}
 
-}*/
 
 sortOnDom();
 buttonsOnDom();
 cardsOnDom(students);
 expelledOnDom();
+kidsOnDom(lostKids);
 eventListeners();
