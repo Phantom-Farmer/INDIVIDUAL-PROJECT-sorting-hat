@@ -65,8 +65,12 @@ const sortOnDom = () => {
   <div class="card-body">
     <h5 class="card-title">MAGICK SCHOOL</h5> 
     <p class="card-text">Let's get you sorted!</p>
-    <form>
+    <form id="sortMe">
+     <div class="inputs">
+      <span class="inputs2">NAME</span>
+       <input type="text" aria-label="name" class="name form-control" id="blank" required>
       <a href="#" class="btn btn-primary" id="sort">Sort!</a>
+      </div>
     </form>
    
   </div>
@@ -136,7 +140,7 @@ const expelledOnDom = () => {
 
 }
 
-const kidsOnDom = (lostKids) => {
+const kidsOnDom = () => {
   let domString = "";
 
   for (const kid of lostKids) {
@@ -192,18 +196,15 @@ document.querySelector("#filter-container").addEventListener("click", (e) => {
      const index = students.findIndex(taco => taco.sId === parseInt(sId));
  
      if (e.target.id.includes("xpel")) {
-       /*students.splice(index, 1);
-       cardsOnDom(students); 
-       lostKids.push(index, 1);
-       kidsOnDom(lostKids);*/
-
-       lostKids.push(index, 1);
-       kidsOnDom(lostKids);
+     
+       lostKids.push(students[index]);
        students.splice(index, 1);
-       cardsOnDom(students);
+       
      }
 
-     
+     kidsOnDom(lostKids);
+     cardsOnDom(students);
+   
  
    }
  
@@ -217,5 +218,5 @@ sortOnDom();
 buttonsOnDom();
 cardsOnDom(students);
 expelledOnDom();
-kidsOnDom(lostKids);
+kidsOnDom();
 eventListeners();

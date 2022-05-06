@@ -5,6 +5,17 @@ body {
 .card-img-top {
   max-width: max-content;
   max-height: max-content;
+  border-bottom: 1px solid brown;
+  border-left: 1px solid brown;
+  border-right: 1px solid brown;
+}
+
+#sort {
+  margin: 7px;
+}
+
+#blank {
+  border: 1px solid brown;
 }
 
 #form-container {
@@ -26,7 +37,7 @@ border: 3px solid brown;
 
 .card {
   
-  height: 250px;
+  height: 200px;
   width: 150px;
   text-align: center;
   align-items: center;
@@ -37,6 +48,7 @@ border: 3px solid brown;
 #student-container {
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 #filter-container {
@@ -56,7 +68,8 @@ border: 3px solid brown;
 
 #expelled-container {
 display: flex;
-justify-content: center;
+justify-content: space-evenly;
+flex-wrap: wrap;
 
 }
 
@@ -107,6 +120,7 @@ justify-content: center;
   display: flex;
   justify-content: center;
   border: 9px dotted black;
+  flex-wrap: wrap;
 }
 
 #exBody {
