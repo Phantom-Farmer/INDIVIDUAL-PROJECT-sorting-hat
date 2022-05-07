@@ -47,8 +47,9 @@ const lostKids = [
     enlisted: false
   },
 
-]
+];
 
+const newStudents = [];
 
 
 const renderToDom = (divId, textToRender) => {
@@ -69,7 +70,7 @@ const sortOnDom = () => {
      <div class="inputs">
       <span class="inputs2">NAME</span>
        <input type="text" aria-label="name" class="name form-control" id="blank" required>
-      <a href="#" class="btn btn-primary" id="sort">Sort!</a>
+       <button type="submit" class="btn btn-primary" id="sort">SORT</button>
       </div>
     </form>
    
@@ -156,6 +157,8 @@ const kidsOnDom = () => {
  }
 };
 
+
+
 //*********************EVENT LISTENERS***************/
 
 const eventListeners = () => {
@@ -209,14 +212,36 @@ document.querySelector("#filter-container").addEventListener("click", (e) => {
    }
  
  });
+};
+ //******************sorting shit*******************/
+ const findHouse = () => {
+  const houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
+
+  document.querySelector("#form-container").addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const newStudent = {
+      sId: students[students.length - 1].sId + 1,
+      name: document.querySelector("#blank").value,
+      location: houses[Math.floor(Math.random() * 4)],
+      enlisted: true,
+    };
+
+    students.push(newStudent);
+    cardsOnDom(students, "#student-container");
+    document.querySelector("#sortMe").reset();
+  });
+};
 
 
-}
+const run = () => {
+  sortOnDom();
+  buttonsOnDom();
+  cardsOnDom(students);
+  expelledOnDom();
+  kidsOnDom();
+  findHouse();
+  eventListeners();
+};
 
-
-sortOnDom();
-buttonsOnDom();
-cardsOnDom(students);
-expelledOnDom();
-kidsOnDom();
-eventListeners();
+run();
